@@ -2,14 +2,14 @@ import Fastify, { FastifyInstance } from "fastify";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import sequelize from './models/sequelize';
-import loggerConfig from './config/logger';
+import logger from './config/logger';
 import { swaggerOptions, swaggerUiOptions } from "./config/swagger";
 import userRoutes from "./routes/user.route";
 
 const port = Number(process.env.APP_PORT) || 3000;
 
 const fastify: FastifyInstance = Fastify({
-  logger: loggerConfig[process.env.APP_ENV],
+  logger: logger,
 });
 
 fastify.register(fastifySwagger, swaggerOptions);
