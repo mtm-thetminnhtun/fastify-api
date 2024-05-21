@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import sequelizeOptions from '../config/db'
+import sequelizeOptions from '../config/sequelize'
 
 const sequelize = new Sequelize(sequelizeOptions);
 

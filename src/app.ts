@@ -1,25 +1,28 @@
-import Fastify from "fastify";
+import Fastify, { FastifyInstance } from "fastify";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
-import sequelize from './database/sequelize';
-import fastifyConfig from './config/app';
+import sequelize from './models/sequelize';
+import loggerConfig from './config/logger';
 import { swaggerOptions, swaggerUiOptions } from "./config/swagger";
+import userRoutes from "./routes/user.route";
 
 const port = Number(process.env.APP_PORT) || 3000;
 
-const fastify = Fastify(fastifyConfig);
+const fastify: FastifyInstance = Fastify({
+  logger: loggerConfig[process.env.APP_ENV],
+});
 
 fastify.register(fastifySwagger, swaggerOptions);
 fastify.register(fastifySwaggerUi, swaggerUiOptions);
-fastify.register(require('./routes/users.route'), { prefix: '/api' });
+fastify.register(userRoutes, { prefix: '/api' });
 
 const start = async () => {
   try {
       await sequelize.sync();
       await fastify.listen({ port: port });
       fastify.log.info(`server listening on ${port}`)
-  } catch (err) {
-      fastify.log.error(err);
+  } catch (error) {
+      fastify.log.error(error);
       process.exit(1);
   }
 };
