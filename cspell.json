@@ -2,6 +2,7 @@
     "words": [
         "fastify",
         "FastifyRequest",
-        "FastifyReply"
+        "FastifyReply",
+        "pino-pretty"
     ]
 }

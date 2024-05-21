@@ -1,33 +1,33 @@
-# Fastify API
+# Fastify TypeScript CRUD API
+
+This project is a CRUD API built with Fastify and TypeScript.
 
 ## API Documentation
 
-Visit: http://localhost:3000/docs
+API documentation is available at: http://localhost:3000/docs
 
 ![](./preview-api-docs.png)
 
 ## Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/mtm-thetminnhtun/fastify-api.git
+cd fastify-api
+```
 
 Install node dependencies: 
 ```
 npm install
 ```
 
-Create `.env` file:
+Create `.env` file based on `.env.example` file and fill in your database credentials:
 ```
 cp .env.example .env
 ```
 
-Setup database in `.env` file. See example:
-```
-DB_USERNAME=root
-DB_PASSWORD=root
-DB_DATABASE=fastify_api
-DB_HOST=localhost
-DB_PORT=3306
-```
-
-Start application:
+Run the application:
 ```
 npm run start
 ```
