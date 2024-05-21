@@ -1,18 +1,12 @@
-import { Sequelize } from "sequelize-typescript";
-import dbConfig from "../config/db";
+import { Sequelize } from "sequelize";
+import sequelizeOptions from '../config/db'
 
-const sequelize = new Sequelize({
-  database: dbConfig.database,
-  username: dbConfig.username,
-  password: dbConfig.password,
-  host: dbConfig.host,
-  dialect: 'mysql'
-});
+const sequelize = new Sequelize(sequelizeOptions);
 
 async function testConnection() {
     try {
         await sequelize.authenticate();
-        console.log("Database connected succefully");
+        console.log("Database connected successfully");
     } catch (error) {
         console.error("Unable to connect to the database:", error);
     }
