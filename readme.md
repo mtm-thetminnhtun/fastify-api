@@ -1,5 +1,11 @@
 # Fastify API
 
+## API Documentation
+
+Visit: http://localhost:3000/docs
+
+![](./preview-api-docs.png)
+
 ## Installation
 
 Install node dependencies: 

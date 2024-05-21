@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
     "dotenv": "^16.4.5",
     "fastify": "^4.27.0",
     "joi": "^17.13.1",
