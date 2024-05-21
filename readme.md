@@ -24,6 +24,7 @@ DB_USERNAME=root
 DB_PASSWORD=root
 DB_DATABASE=fastify_api
 DB_HOST=localhost
+DB_PORT=3306
 ```
 
 Start application:
