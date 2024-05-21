@@ -1,7 +1,8 @@
-const User = require("../models/user");
-const Joi = require("joi");
+import Joi from "joi";
+import User from "../models/user";
+import { FastifyReply, FastifyRequest } from "fastify";
 
-async function index(request, reply) {
+async function index(request: FastifyRequest, reply: FastifyReply) {
     try {
         const users = await User.findAll();
         reply.send(users);
@@ -10,7 +11,7 @@ async function index(request, reply) {
     }
 }
 
-async function show(request, reply) {
+async function show(request: FastifyRequest<{Params: {id: number}}>, reply: FastifyReply) {
     try {
         const user = await User.findByPk(request.params.id);
         if (user) {
@@ -23,7 +24,7 @@ async function show(request, reply) {
     }
 }
 
-async function store(request, reply) {
+async function store(request: FastifyRequest, reply: FastifyReply) {
     try {
         const schema = Joi.object({
             name: Joi.string().required(),
@@ -52,7 +53,7 @@ async function store(request, reply) {
     }
 }
 
-async function update(request, reply) {
+async function update(request: FastifyRequest<{Params: {id: number}}>, reply: FastifyReply) {
     try {
         const schema = Joi.object({
             name: Joi.string().required(),
@@ -69,7 +70,7 @@ async function update(request, reply) {
 
         const user = await User.findByPk(request.params.id);
         if (!user) {
-            return reply.status(404).send({ message: "User not founxd" });
+            return reply.status(404).send({ message: "User not found" });
         }
 
         await User.update(value, {
@@ -83,7 +84,7 @@ async function update(request, reply) {
     }
 }
 
-async function destroy(request, reply) {
+async function destroy(request: FastifyRequest<{Params: {id: number}}>, reply: FastifyReply) {
     try {
         const deleted = await User.destroy({
             where: { id: request.params.id },
@@ -98,10 +99,10 @@ async function destroy(request, reply) {
     }
 }
 
-module.exports = {
+export default {
     index,
     show,
     store,
     update,
-    destroy,
-};
+    destroy
+}

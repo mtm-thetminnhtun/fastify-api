@@ -80,7 +80,7 @@ const deleteSchema = {
   },
 };
 
-module.exports = {
+export default {
   getAllSchema,
   getSingleSchema,
   storeSchema,

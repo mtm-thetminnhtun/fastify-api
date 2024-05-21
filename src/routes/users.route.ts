@@ -1,7 +1,8 @@
-const usersController = require('../controllers/users.controller');
-const userSchema = require('../schemas/users.scheme');
+import { FastifyInstance } from 'fastify';
+import usersController from '../controllers/users.controller';
+import userSchema from '../schemas/users.schema';
 
-async function userRoutes(fastify, options) {
+async function userRoutes(fastify: FastifyInstance) {
     fastify.get('/users', userSchema.getAllSchema, usersController.index);
     fastify.get('/users/:id', userSchema.getSingleSchema, usersController.show);
     fastify.post('/users', userSchema.storeSchema, usersController.store);
@@ -9,4 +10,4 @@ async function userRoutes(fastify, options) {
     fastify.delete('/users/:id', userSchema.deleteSchema, usersController.destroy);
 }
 
-module.exports = userRoutes;
+export default userRoutes;
